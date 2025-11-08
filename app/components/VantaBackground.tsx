@@ -1,10 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-
-interface VantaEffect {
-  destroy: () => void;
-}
+import type { VantaEffect } from 'vanta/dist/vanta.waves.min';
 
 export default function VantaBackground() {
   const vantaRef = useRef<HTMLDivElement>(null);
@@ -17,7 +14,6 @@ export default function VantaBackground() {
         const THREE = await import('three');
         const VANTA = await import('vanta/dist/vanta.waves.min');
 
-        // @ts-expect-error - Vanta types are not perfect
         const effect = VANTA.default({
           el: vantaRef.current,
           THREE: THREE,
