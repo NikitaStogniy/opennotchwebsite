@@ -2,9 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+interface VantaEffect {
+  destroy: () => void;
+}
+
 export default function VantaBackground() {
   const vantaRef = useRef<HTMLDivElement>(null);
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const [vantaEffect, setVantaEffect] = useState<VantaEffect | null>(null);
 
   useEffect(() => {
     if (!vantaEffect && vantaRef.current) {
@@ -13,7 +17,7 @@ export default function VantaBackground() {
         const THREE = await import('three');
         const VANTA = await import('vanta/dist/vanta.waves.min');
 
-        // @ts-ignore - Vanta types are not perfect
+        // @ts-expect-error - Vanta types are not perfect
         const effect = VANTA.default({
           el: vantaRef.current,
           THREE: THREE,

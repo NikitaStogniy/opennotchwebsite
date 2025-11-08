@@ -30,7 +30,7 @@ const pageTransition = {
   stiffness: 300,
   damping: 30,
   mass: 0.8,
-};
+} as const;
 
 export default function PageTransition({ children }: PageTransitionProps) {
   return (
