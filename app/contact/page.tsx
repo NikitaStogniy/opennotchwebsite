@@ -3,129 +3,106 @@
 import { motion } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
 
-const contactInfo = [
-  { icon: '✉️', title: 'Email', value: 'hello@example.com', color: 'from-blue-50 to-white', borderColor: 'border-blue-100', iconColor: 'from-blue-400 to-blue-600' },
-  { icon: '🌐', title: 'Social', value: '@yourhandle', color: 'from-purple-50 to-white', borderColor: 'border-purple-100', iconColor: 'from-purple-400 to-purple-600' },
-  { icon: '📍', title: 'Location', value: 'Your City, Country', color: 'from-green-50 to-white', borderColor: 'border-green-100', iconColor: 'from-green-400 to-green-600' },
+const contactChannels = [
+  {
+    title: 'GitHub',
+    description: 'Report issues, contribute code, or browse the source',
+    link: 'https://github.com/NikitaStogniy/OpenNotch',
+    gradient: 'from-gray-500/10 to-slate-500/10',
+    borderGradient: 'from-gray-500 to-slate-500'
+  },
+  {
+    title: 'Discussions',
+    description: 'Join the community and share your ideas',
+    link: 'https://github.com/NikitaStogniy/OpenNotch/discussions',
+    gradient: 'from-blue-500/10 to-cyan-500/10',
+    borderGradient: 'from-blue-500 to-cyan-500'
+  },
+  {
+    title: 'Email',
+    description: 'Get in touch for business inquiries',
+    link: 'mailto:hello@opennotch.com',
+    gradient: 'from-purple-500/10 to-pink-500/10',
+    borderGradient: 'from-purple-500 to-pink-500'
+  },
 ];
 
 export default function ContactPage() {
   return (
     <PageTransition>
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <motion.h1
+      <div className="max-w-5xl mx-auto px-6 py-20">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-5xl font-bold text-gray-900 mb-4"
+          transition={{ delay: 0.1 }}
+          className="text-center mb-20"
         >
-          Contact
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="text-xl text-gray-600 mb-8"
-        >
-          Get in touch with us
-        </motion.p>
+          <h1 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 mb-6">
+            Get in Touch
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Connect with the OpenNotch community and team
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="p-8 bg-white rounded-2xl shadow-sm border border-gray-200 hover:shadow-xl transition-shadow"
-          >
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-              Send a Message
-            </h2>
-            <form className="space-y-4">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
-                  placeholder="Your name"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-              >
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
-                  placeholder="your@email.com"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
-              >
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 outline-none transition-all resize-none"
-                  placeholder="Your message..."
-                />
-              </motion.div>
-              <motion.button
-                type="submit"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all shadow-sm hover:shadow-md"
-              >
-                Send Message
-              </motion.button>
-            </form>
-          </motion.div>
-
-          {/* Contact Info */}
-          <div className="space-y-6">
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={info.title}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 + index * 0.1 }}
-                whileHover={{ scale: 1.03, y: -5 }}
-                className={`p-6 bg-gradient-to-br ${info.color} rounded-2xl border ${info.borderColor} cursor-pointer hover:shadow-lg transition-shadow`}
-              >
-                <motion.div
-                  whileHover={{ rotate: [0, -15, 15, -15, 0], scale: 1.2 }}
-                  transition={{ duration: 0.5 }}
-                  className={`w-12 h-12 bg-gradient-to-br ${info.iconColor} rounded-xl mb-4 flex items-center justify-center text-2xl shadow-md`}
-                >
-                  {info.icon}
-                </motion.div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {info.title}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {contactChannels.map((channel, index) => (
+            <motion.a
+              key={channel.title}
+              href={channel.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 + index * 0.1 }}
+              className={`relative p-6 bg-gradient-to-br ${channel.gradient} rounded-2xl border border-gray-200 hover:border-gray-300 transition-all group`}
+            >
+              <div className={`absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r ${channel.borderGradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
+              <div className="relative">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  {channel.title}
                 </h3>
-                <p className="text-gray-600">
-                  {info.value}
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {channel.description}
                 </p>
-              </motion.div>
-            ))}
-          </div>
+                <div className="mt-4 flex items-center text-blue-600 text-sm font-medium">
+                  <span className="group-hover:translate-x-1 transition-transform">Learn more</span>
+                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </motion.a>
+          ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="relative p-8 bg-gradient-to-br from-gray-50 to-white rounded-3xl border border-gray-200"
+        >
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">
+              Join the Community
+            </h2>
+            <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+              OpenNotch is built by contributors from around the world. Whether you&apos;re fixing bugs,
+              adding features, or improving documentation, your contribution matters.
+            </p>
+            <a
+              href="https://github.com/NikitaStogniy/OpenNotch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-all font-medium"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+              </svg>
+              View on GitHub
+            </a>
+          </div>
+        </motion.div>
       </div>
     </PageTransition>
   );

@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Interactive MacBook | Custom Notch",
-  description: "An interactive MacBook website with custom notch interface",
+  title: "OpenNotch - Transform Your MacBook's Notch",
+  description: "Open source productivity tool that transforms your MacBook's notch into a powerful workspace. Drag & drop files, use calculator, and more.",
 };
 
 export default function RootLayout({

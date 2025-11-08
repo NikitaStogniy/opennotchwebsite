@@ -6,9 +6,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const menuItems = [
-  { name: 'Functions', path: '/functions', icon: '⚡' },
-  { name: 'About', path: '/about', icon: '👤' },
-  { name: 'Contact', path: '/contact', icon: '✉️' },
+  { name: 'Features', path: '/functions' },
+  { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' },
 ];
 
 export default function InteractiveNotch() {
@@ -78,13 +78,12 @@ export default function InteractiveNotch() {
                       className="group relative"
                     >
                       <motion.div
-                        whileHover={{ scale: 1.1 }}
+                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex flex-col items-center gap-1 px-3 py-1"
+                        className="px-4 py-2"
                       >
-                        <span className="text-lg">{item.icon}</span>
                         <span
-                          className={`text-xs font-medium transition-colors ${
+                          className={`text-sm font-medium transition-colors ${
                             isActive
                               ? 'text-blue-400'
                               : 'text-gray-400 group-hover:text-white'
@@ -97,7 +96,7 @@ export default function InteractiveNotch() {
                       {isActive && (
                         <motion.div
                           layoutId="activeIndicator"
-                          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-blue-400 rounded-full"
+                          className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-blue-400 rounded-full"
                           transition={{
                             type: 'spring',
                             stiffness: 380,
