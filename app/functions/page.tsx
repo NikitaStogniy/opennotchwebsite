@@ -2,53 +2,56 @@
 
 import { motion } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
-
-const features = [
-  {
-    id: 1,
-    title: 'File Drop Zone',
-    description: 'Drag and drop files directly into the notch for instant access. Keep your important documents at your fingertips without cluttering your desktop.',
-    gradient: 'from-blue-500/10 to-cyan-500/10',
-    borderGradient: 'from-blue-500 to-cyan-500'
-  },
-  {
-    id: 2,
-    title: 'Built-in Calculator',
-    description: 'Perform quick calculations without opening a separate app. Access the calculator right from the notch for seamless productivity.',
-    gradient: 'from-purple-500/10 to-pink-500/10',
-    borderGradient: 'from-purple-500 to-pink-500'
-  },
-  {
-    id: 3,
-    title: 'Quick Access',
-    description: 'Instant access to your tools and files. The notch becomes your personal productivity hub, always ready when you need it.',
-    gradient: 'from-green-500/10 to-emerald-500/10',
-    borderGradient: 'from-green-500 to-emerald-500'
-  },
-  {
-    id: 4,
-    title: 'Customizable Interface',
-    description: 'Tailor the appearance and behavior to match your workflow. OpenNotch adapts to your unique working style.',
-    gradient: 'from-orange-500/10 to-amber-500/10',
-    borderGradient: 'from-orange-500 to-amber-500'
-  },
-  {
-    id: 5,
-    title: 'Privacy Focused',
-    description: 'All data stays local on your Mac. No telemetry, no cloud services, no tracking—just pure functionality.',
-    gradient: 'from-red-500/10 to-rose-500/10',
-    borderGradient: 'from-red-500 to-rose-500'
-  },
-  {
-    id: 6,
-    title: 'Lightweight & Fast',
-    description: 'Minimal resource consumption. OpenNotch runs efficiently in the background without slowing down your system.',
-    gradient: 'from-indigo-500/10 to-violet-500/10',
-    borderGradient: 'from-indigo-500 to-violet-500'
-  },
-];
+import { useI18n } from '../i18n/I18nContext';
 
 export default function FunctionsPage() {
+  const { t } = useI18n();
+
+  const features = [
+    {
+      id: 1,
+      title: t.features.fileDropZone.title,
+      description: t.features.fileDropZone.description,
+      gradient: 'from-blue-500/10 to-cyan-500/10',
+      borderGradient: 'from-blue-500 to-cyan-500'
+    },
+    {
+      id: 2,
+      title: t.features.calculator.title,
+      description: t.features.calculator.description,
+      gradient: 'from-purple-500/10 to-pink-500/10',
+      borderGradient: 'from-purple-500 to-pink-500'
+    },
+    {
+      id: 3,
+      title: t.features.quickAccess.title,
+      description: t.features.quickAccess.description,
+      gradient: 'from-green-500/10 to-emerald-500/10',
+      borderGradient: 'from-green-500 to-emerald-500'
+    },
+    {
+      id: 4,
+      title: t.features.customizable.title,
+      description: t.features.customizable.description,
+      gradient: 'from-orange-500/10 to-amber-500/10',
+      borderGradient: 'from-orange-500 to-amber-500'
+    },
+    {
+      id: 5,
+      title: t.features.privacy.title,
+      description: t.features.privacy.description,
+      gradient: 'from-red-500/10 to-rose-500/10',
+      borderGradient: 'from-red-500 to-rose-500'
+    },
+    {
+      id: 6,
+      title: t.features.lightweight.title,
+      description: t.features.lightweight.description,
+      gradient: 'from-indigo-500/10 to-violet-500/10',
+      borderGradient: 'from-indigo-500 to-violet-500'
+    },
+  ];
+
   return (
     <PageTransition>
       <div className="max-w-6xl mx-auto px-6 py-20">
@@ -59,10 +62,10 @@ export default function FunctionsPage() {
           className="text-center mb-20"
         >
           <h1 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 mb-6">
-            Features
+            {t.features.title}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Transform your MacBook&apos;s notch into a powerful productivity tool
+            {t.features.subtitle}
           </p>
         </motion.div>
 
