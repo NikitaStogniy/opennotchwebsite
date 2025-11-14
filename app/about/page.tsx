@@ -2,52 +2,55 @@
 
 import { motion } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
-
-const coreValues = [
-  {
-    name: 'Open Source',
-    description: 'Fully open source code available on GitHub. Built by the community, for the community.',
-    gradient: 'from-blue-500/10 to-cyan-500/10',
-    borderGradient: 'from-blue-500 to-cyan-500'
-  },
-  {
-    name: 'Privacy First',
-    description: 'All data stays local on your Mac. No telemetry, no cloud services, no tracking.',
-    gradient: 'from-purple-500/10 to-pink-500/10',
-    borderGradient: 'from-purple-500 to-pink-500'
-  },
-  {
-    name: 'Free Forever',
-    description: 'Completely free to use with no ads, no subscriptions, no hidden costs.',
-    gradient: 'from-green-500/10 to-emerald-500/10',
-    borderGradient: 'from-green-500 to-emerald-500'
-  },
-];
-
-const contributions = [
-  {
-    name: 'Code Contributions',
-    description: 'Help us build new features and improve existing ones',
-    link: 'https://github.com/NikitaStogniy/OpenNotch/pulls'
-  },
-  {
-    name: 'Bug Reports',
-    description: 'Report issues and help us make OpenNotch more stable',
-    link: 'https://github.com/NikitaStogniy/OpenNotch/issues'
-  },
-  {
-    name: 'Feature Ideas',
-    description: 'Share your ideas for new capabilities and improvements',
-    link: 'https://github.com/NikitaStogniy/OpenNotch/discussions'
-  },
-  {
-    name: 'Documentation',
-    description: 'Help improve our docs and make OpenNotch easier to use',
-    link: 'https://github.com/NikitaStogniy/OpenNotch/wiki'
-  },
-];
+import { useI18n } from '../i18n/I18nContext';
 
 export default function AboutPage() {
+  const { t } = useI18n();
+
+  const coreValues = [
+    {
+      name: t.about.coreValues.openSource.name,
+      description: t.about.coreValues.openSource.description,
+      gradient: 'from-blue-500/10 to-cyan-500/10',
+      borderGradient: 'from-blue-500 to-cyan-500'
+    },
+    {
+      name: t.about.coreValues.privacyFirst.name,
+      description: t.about.coreValues.privacyFirst.description,
+      gradient: 'from-purple-500/10 to-pink-500/10',
+      borderGradient: 'from-purple-500 to-pink-500'
+    },
+    {
+      name: t.about.coreValues.freeForeever.name,
+      description: t.about.coreValues.freeForeever.description,
+      gradient: 'from-green-500/10 to-emerald-500/10',
+      borderGradient: 'from-green-500 to-emerald-500'
+    },
+  ];
+
+  const contributions = [
+    {
+      name: t.about.contribute.codeContributions.name,
+      description: t.about.contribute.codeContributions.description,
+      link: 'https://github.com/NikitaStogniy/OpenNotch/pulls'
+    },
+    {
+      name: t.about.contribute.bugReports.name,
+      description: t.about.contribute.bugReports.description,
+      link: 'https://github.com/NikitaStogniy/OpenNotch/issues'
+    },
+    {
+      name: t.about.contribute.featureIdeas.name,
+      description: t.about.contribute.featureIdeas.description,
+      link: 'https://github.com/NikitaStogniy/OpenNotch/discussions'
+    },
+    {
+      name: t.about.contribute.documentation.name,
+      description: t.about.contribute.documentation.description,
+      link: 'https://github.com/NikitaStogniy/OpenNotch/wiki'
+    },
+  ];
+
   return (
     <PageTransition>
       <div className="max-w-5xl mx-auto px-6 py-20">
@@ -58,10 +61,10 @@ export default function AboutPage() {
           className="text-center mb-20"
         >
           <h1 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 mb-6">
-            About OpenNotch
+            {t.about.title}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Transform your MacBook&apos;s notch from a design compromise into a productivity powerhouse
+            {t.about.subtitle}
           </p>
         </motion.div>
 
@@ -75,19 +78,16 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative">
               <div className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white text-sm font-medium mb-6">
-                Open Source
+                {t.about.openSourceBadge}
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Making the Notch Useful
+                {t.about.makingNotchUseful}
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4 text-lg">
-                OpenNotch transforms your MacBook&apos;s notch from a controversial design element into a powerful
-                productivity tool. Access files instantly, perform calculations without opening apps, and
-                streamline your workflow—all from the space that was previously wasted.
+                {t.about.description1}
               </p>
               <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-                Built with privacy in mind, everything stays local on your Mac. No data collection, no telemetry,
-                just a better way to work with your MacBook.
+                {t.about.description2}
               </p>
               <div className="flex gap-3">
                 <a
@@ -99,7 +99,7 @@ export default function AboutPage() {
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
                   </svg>
-                  View on GitHub
+                  {t.about.viewGithub}
                 </a>
                 <a
                   href="https://github.com/NikitaStogniy/OpenNotch"
@@ -107,7 +107,7 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-gray-200 text-gray-700 rounded-lg hover:border-gray-300 hover:bg-gray-50 transition-all font-medium"
                 >
-                  Star on GitHub
+                  {t.about.starGithub}
                 </a>
               </div>
             </div>
@@ -140,8 +140,8 @@ export default function AboutPage() {
             className="mt-12"
           >
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">Contribute to OpenNotch</h2>
-              <p className="text-gray-600">Join our community and help make OpenNotch better</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">{t.about.contribute.title}</h2>
+              <p className="text-gray-600">{t.about.contribute.subtitle}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {contributions.map((contribution, index) => (

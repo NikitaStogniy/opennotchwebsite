@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MacBookMockup from "./components/MacBookMockup";
 import Screen from "./components/Screen";
+import { I18nProvider } from "./i18n/I18nContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +30,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MacBookMockup>
-          <Screen>{children}</Screen>
-        </MacBookMockup>
+        <I18nProvider>
+          <MacBookMockup>
+            <Screen>{children}</Screen>
+          </MacBookMockup>
+        </I18nProvider>
       </body>
     </html>
   );
