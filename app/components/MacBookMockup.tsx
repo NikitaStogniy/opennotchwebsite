@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import Image from "next/image";
 import VantaBackground from "./VantaBackground";
 
 interface MacBookMockupProps {
@@ -11,34 +10,22 @@ interface MacBookMockupProps {
 
 export default function MacBookMockup({ children }: MacBookMockupProps) {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 md:p-8 relative overflow-hidden">
+    <div className="min-h-screen w-full flex items-center justify-center p-2 relative overflow-hidden">
       {/* Vanta Waves Background */}
       <VantaBackground />
 
-      {/* MacBook Container with SVG */}
+      {/* 2D Screen Container - 99% of viewport */}
       <motion.div
-        initial={{ opacity: 0, scale: 1 }}
-        animate={{ opacity: 1, scale: 1.5 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-7xl z-10"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-[99vw] h-[99vh] z-10"
       >
-        <div className="relative">
-          {/* MacBook SVG as background */}
-          <div className="relative w-full" style={{ aspectRatio: "16/10" }}>
-            <Image
-              src="/Macbook.svg"
-              alt="MacBook Pro"
-              fill
-              className="object-contain drop-shadow-2xl"
-              priority
-            />
-
-            {/* Screen Content Area - positioned absolutely within the SVG */}
-            <div className="absolute inset-0 flex items-start justify-center">
-              <div className="w-[55%] h-[73%] mt-[45px] rounded-[10px] overflow-hidden">
-                {children}
-              </div>
-            </div>
+        {/* Simple 2D Screen with subtle border */}
+        <div className="relative w-full h-full bg-black/5 rounded-lg border border-gray-300/50 shadow-2xl overflow-hidden backdrop-blur-sm">
+          {/* Screen Content */}
+          <div className="w-full h-full overflow-auto">
+            {children}
           </div>
         </div>
       </motion.div>
