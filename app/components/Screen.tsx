@@ -2,6 +2,7 @@
 
 import { ReactNode } from 'react';
 import InteractiveNotch from './InteractiveNotch';
+import SmoothScroll from './SmoothScroll';
 
 interface ScreenProps {
   children: ReactNode;
@@ -13,9 +14,11 @@ export default function Screen({ children }: ScreenProps) {
       {/* Interactive Notch */}
       <InteractiveNotch />
 
-      {/* Main Content Area */}
-      <div className="relative w-full h-full pt-16 md:pt-20 overflow-auto">
-        {children}
+      {/* Main Content Area with Smooth Scroll */}
+      <div className="relative w-full h-full pt-16 md:pt-20 overflow-auto" id="smooth-wrapper">
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </div>
 
       {/* macOS-style Menu Bar (optional decorative element) */}
