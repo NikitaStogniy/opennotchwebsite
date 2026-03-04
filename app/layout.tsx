@@ -1,23 +1,39 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import MacBookMockup from "./components/MacBookMockup";
-import Screen from "./components/Screen";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { I18nProvider } from "./i18n/I18nContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "OpenNotch - Transform Your MacBook's Notch",
-  description: "Open source productivity tool that transforms your MacBook's notch into a powerful workspace. Drag & drop files, use calculator, and more.",
+  title: "OpenNotch — Transform Your MacBook's Notch",
+  description:
+    "Free, open-source macOS app that transforms your MacBook's notch into a productivity tool. File drop zone, calculator, quick access and more.",
+  keywords: [
+    "OpenNotch",
+    "MacBook",
+    "notch",
+    "productivity",
+    "macOS",
+    "open source",
+    "file drop",
+    "calculator",
+  ],
+  authors: [{ name: "Nikita Stogniy" }],
+  openGraph: {
+    title: "OpenNotch — Transform Your MacBook's Notch",
+    description:
+      "Free, open-source macOS app that transforms your MacBook's notch into a productivity tool.",
+    url: "https://opennotch.com",
+    siteName: "OpenNotch",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OpenNotch — Transform Your MacBook's Notch",
+    description:
+      "Free, open-source macOS app that transforms your MacBook's notch into a productivity tool.",
+  },
 };
 
 export default function RootLayout({
@@ -27,13 +43,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-gray-100">
         <I18nProvider>
-          <MacBookMockup>
-            <Screen>{children}</Screen>
-          </MacBookMockup>
+          <Header />
+          <main className="min-h-screen pt-16">{children}</main>
+          <Footer />
         </I18nProvider>
       </body>
     </html>
